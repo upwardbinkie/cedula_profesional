@@ -1,0 +1,62 @@
+<%= form_with(model: cedula, local: true) do |form| %>
+  <% if cedula.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cedula.errors.count, "error") %> prohibited this cedula from being saved:</h2>
+
+      <ul>
+      <% cedula.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cedula_number %>
+    <%= form.number_field :cedula_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cedula_type %>
+    <%= form.text_field :cedula_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name_1 %>
+    <%= form.text_field :last_name_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name_2 %>
+    <%= form.text_field :last_name_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.check_box :gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :institution %>
+    <%= form.text_field :institution %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

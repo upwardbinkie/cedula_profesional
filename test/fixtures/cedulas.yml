@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cedula_number: 1
+  cedula_type: MyString
+  name: MyString
+  last_name_1: MyString
+  last_name_2: MyString
+  gender: false
+  title: MyString
+  institution: MyString
+  year: 1
+
+two:
+  cedula_number: 1
+  cedula_type: MyString
+  name: MyString
+  last_name_1: MyString
+  last_name_2: MyString
+  gender: false
+  title: MyString
+  institution: MyString
+  year: 1

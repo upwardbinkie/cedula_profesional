@@ -1,0 +1,2 @@
+module CedulasHelper
+end

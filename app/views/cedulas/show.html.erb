@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cedula number:</strong>
+  <%= @cedula.cedula_number %>
+</p>
+
+<p>
+  <strong>Cedula type:</strong>
+  <%= @cedula.cedula_type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cedula.name %>
+</p>
+
+<p>
+  <strong>Last name 1:</strong>
+  <%= @cedula.last_name_1 %>
+</p>
+
+<p>
+  <strong>Last name 2:</strong>
+  <%= @cedula.last_name_2 %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @cedula.gender %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @cedula.title %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @cedula.institution %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @cedula.year %>
+</p>
+
+<%= link_to 'Edit', edit_cedula_path(@cedula) %> |
+<%= link_to 'Back', cedulas_path %>

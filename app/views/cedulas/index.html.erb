@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cedulas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cedula number</th>
+      <th>Cedula type</th>
+      <th>Name</th>
+      <th>Last name 1</th>
+      <th>Last name 2</th>
+      <th>Gender</th>
+      <th>Title</th>
+      <th>Institution</th>
+      <th>Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cedulas.each do |cedula| %>
+      <tr>
+        <td><%= cedula.cedula_number %></td>
+        <td><%= cedula.cedula_type %></td>
+        <td><%= cedula.name %></td>
+        <td><%= cedula.last_name_1 %></td>
+        <td><%= cedula.last_name_2 %></td>
+        <td><%= cedula.gender %></td>
+        <td><%= cedula.title %></td>
+        <td><%= cedula.institution %></td>
+        <td><%= cedula.year %></td>
+        <td><%= link_to 'Show', cedula %></td>
+        <td><%= link_to 'Edit', edit_cedula_path(cedula) %></td>
+        <td><%= link_to 'Destroy', cedula, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @cedulas %>
+
+<br>
+
+<%= link_to 'New Cedula', new_cedula_path %>
