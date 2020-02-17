@@ -8,7 +8,7 @@ task :scraper => [ :environment ] do
 
     current_cedula = Cedula.count != 0 ? Cedula.last.cedula_number.to_i + 1 : 1
 
-    max_cedulas = 1923069 #As of 2020/02/16
+    max_cedulas = 11925767 #As of 2020/02/17
 
     null_count = 0
 
