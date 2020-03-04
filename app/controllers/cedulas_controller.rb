@@ -4,7 +4,7 @@ class CedulasController < ApplicationController
   # GET /cedulas
   # GET /cedulas.json
   def index
-    @cedulas = Cedula.paginate(page: params[:page], per_page: 10)
+    @cedulas = Cedula.paginate(page: params[:page], per_page: 20).order("id ASC")
     #@cedulas = Cedula.all
   end
 
