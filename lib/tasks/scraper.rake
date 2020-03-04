@@ -23,7 +23,7 @@ task :scraper => [ :environment ] do
             results = parsed_page["response"]["docs"]
             if(results.count > 0)
                 results.each do |result|
-                    if(!result["nombre"].is_number? && !result["nombre"].include?('-'))
+                    if(!result["nombre"].is_number? && !result["nombre"].include?('--') && !result["paterno"].include?('--') && !result["materno"].include?('--'))
                         cedula = Cedula.create!(
                             cedula_number: result["numCedula"],
                             cedula_type: result["tipo"],
@@ -57,6 +57,9 @@ task :scraper => [ :environment ] do
         rescue Errno::ECONNREFUSED
             puts "[ #{Time.zone.now.to_s} ] Connection Refused on cedula #{cedula_number}. Waiting 60 seconds to try again..."
             sleep(60)
+        rescue Errno::ECONNRESET
+            puts "[ #{Time.zone.now.to_s} ] Connection Refused on cedula #{cedula_number}. Waiting 1 seconds to try again..."
+            sleep(1)            
         end
     end
 
