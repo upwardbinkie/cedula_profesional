@@ -37,6 +37,9 @@ task :scraper => [ :environment ] do
                         )
                     end
                 end
+                if (cedula_number.to_i % 1000 == 0 || null_count > 0)
+                    puts "[ #{Time.zone.now.to_s} ] Cedula found. Resuming task on cedula #{cedula_number}..."
+                end
                 current_cedula += 1
                 null_count = 0
             else
