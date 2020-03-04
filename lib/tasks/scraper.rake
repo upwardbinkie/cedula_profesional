@@ -4,11 +4,11 @@ require 'httparty'
 desc "Retrieve Cedula Profesional information from SEP DB"
 task :scraper => [ :environment ] do
 
-    puts "Scrapping cedulas... #{Time.zone.now.to_s}"
-
-    start = Time.zone.now.to_s
+    puts "[ #{Time.zone.now.to_s} ] Scraper task started..."
 
     current_cedula = Cedula.count != 0 ? Cedula.last.cedula_number.to_i + 1 : 1
+
+    puts "Current cedula = #{current_cedula}"
 
     max_cedulas = 11941338 #As of 2020/02/27
 
@@ -23,7 +23,7 @@ task :scraper => [ :environment ] do
             results = parsed_page["response"]["docs"]
             if(results.count > 0)
                 results.each do |result|
-                    if(!result["nombre"].is_number? && !result["nombre"].include?('--') && !result["paterno"].include?('--') && !result["materno"].include?('--'))
+                    if(!result["nombre"].is_number? && !result["nombre"].include?('--') && !result["paterno"].include?('--') && !result["materno"].include?('--') && result["numCedula"] == cedula_number)
                         cedula = Cedula.create!(
                             cedula_number: result["numCedula"],
                             cedula_type: result["tipo"],
@@ -66,8 +66,7 @@ task :scraper => [ :environment ] do
         end
     end
 
-    finish = Time.zone.now.to_s
-    puts "Done! Started at #{start} and finished at #{finish}"
+    puts "[ #{Time.zone.now.to_s} ] Scraper task finished!"
 end
 
 def set_number(current_number)
