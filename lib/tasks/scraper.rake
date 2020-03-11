@@ -58,11 +58,21 @@ task :scraper => [ :environment ] do
                 sleep(1)
             end
         rescue Errno::ECONNREFUSED
-            puts "[ #{Time.zone.now.to_s} ] Connection Refused on cedula #{cedula_number}. Waiting 60 seconds to try again..."
+            puts "[ #{Time.zone.now.to_s} ] Error: Connection Refused on cedula #{cedula_number}. Waiting 60 seconds to try again..."
+            null_count += 1
             sleep(60)
         rescue Errno::ECONNRESET
-            puts "[ #{Time.zone.now.to_s} ] Connection Refused on cedula #{cedula_number}. Waiting 1 seconds to try again..."
+            puts "[ #{Time.zone.now.to_s} ] Error: Connection Reset on cedula #{cedula_number}. Waiting 1 seconds to try again..."
+            null_count += 1
             sleep(1)            
+        rescue Errno::EHOSTUNREACH
+            puts "[ #{Time.zone.now.to_s} ] Error: Could not reach host on cedula #{cedula_number}. Waiting 1 seconds to try again..."
+            null_count += 1
+            sleep(1)
+        rescue Net::OpenTimeout
+            puts "[ #{Time.zone.now.to_s} ] Error: Open Timeout on cedula #{cedula_number}. Waiting 1 seconds to try again..."
+            null_count += 1
+            sleep(1)
         end
     end
 
