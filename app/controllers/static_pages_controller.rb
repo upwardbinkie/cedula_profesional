@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class StaticPagesController < ApplicationController
   def home
-    @cedulas = Cedula.distinct.count('cedula_number')
-    @titles = Cedula.distinct.count('title')
-    @institutions = Cedula.distinct.count('institution')
+    @cedulas = Cedula.distinct.count("cedula_number")
+    @titles = Cedula.distinct.count("title")
+    @institutions = Cedula.distinct.count("institution")
   end
 
   def about

@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class CedulasControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,8 +18,12 @@ class CedulasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create cedula" do
-    assert_difference('Cedula.count') do
-      post cedulas_url, params: { cedula: { cedula_number: @cedula.cedula_number, cedula_type: @cedula.cedula_type, gender: @cedula.gender, institution: @cedula.institution, last_name_1: @cedula.last_name_1, last_name_2: @cedula.last_name_2, name: @cedula.name, title: @cedula.title, year: @cedula.year } }
+    assert_difference("Cedula.count") do
+      post cedulas_url,
+        params: { cedula: { cedula_number: @cedula.cedula_number, cedula_type: @cedula.cedula_type,
+                            gender: @cedula.gender, institution: @cedula.institution, last_name_1: @cedula.last_name_1,
+                            last_name_2: @cedula.last_name_2, name: @cedula.name, title: @cedula.title,
+                            year: @cedula.year, } }
     end
 
     assert_redirected_to cedula_url(Cedula.last)
@@ -34,12 +40,16 @@ class CedulasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cedula" do
-    patch cedula_url(@cedula), params: { cedula: { cedula_number: @cedula.cedula_number, cedula_type: @cedula.cedula_type, gender: @cedula.gender, institution: @cedula.institution, last_name_1: @cedula.last_name_1, last_name_2: @cedula.last_name_2, name: @cedula.name, title: @cedula.title, year: @cedula.year } }
+    patch cedula_url(@cedula),
+      params: { cedula: { cedula_number: @cedula.cedula_number, cedula_type: @cedula.cedula_type,
+                          gender: @cedula.gender, institution: @cedula.institution, last_name_1: @cedula.last_name_1,
+                          last_name_2: @cedula.last_name_2, name: @cedula.name, title: @cedula.title,
+                          year: @cedula.year, } }
     assert_redirected_to cedula_url(@cedula)
   end
 
   test "should destroy cedula" do
-    assert_difference('Cedula.count', -1) do
+    assert_difference("Cedula.count", -1) do
       delete cedula_url(@cedula)
     end
 
